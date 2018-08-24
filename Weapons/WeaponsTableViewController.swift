@@ -9,13 +9,13 @@
 import UIKit
 
 class WeaponsTableViewController: UITableViewController {
-    var weapons = [Weapon(name: "AUG", type: "自动步枪", image: "story1", text: """
+    var weapons = [Weapon(time: "2018-8-21", image: "story1", text: """
 无论富裕还是贫穷，生活永远还是需要艺术的。今年第三场艺术展达成！
 """) ,
-                   Weapon(name: "AWM", type: "狙击枪", image: "story2", text: """
+                   Weapon(time: "2018-8-22", image: "story2", text: """
  本来以为保龄球会很重很难，没想到半小时就学会了，120分，厉害吧
 """) ,
-                   Weapon(name: "十字弩", type: "冷兵器", image: "story3", text: """
+                   Weapon(time: "2018-8-24", image: "story3", text: """
  Design Thinking 课程上对自习室的重新设计确实解决了大学生的痛点，队…
 """)
 ]
@@ -40,7 +40,7 @@ class WeaponsTableViewController: UITableViewController {
         
         //分享一行操作
         let shareAction = UIContextualAction(style: .normal, title: "share") { (_, _, completion) in
-            let text = "这是绝地求生中的\(self.weapons[indexPath.row])"
+            let text = "这是\(self.weapons[indexPath.row])"
             let image = UIImage(named: self.weapons[indexPath.row].image)!
             
             //调用系统自带的分享功能
@@ -76,12 +76,12 @@ class WeaponsTableViewController: UITableViewController {
         return config
     }
     
-    @IBAction func favBtnTap(_ sender: UIButton) {
-        let btnPos = sender.convert(CGPoint.zero, to: self.tableView)  //将sender相对自己的位置（0，0）转换成相对于 tableView 的位置
-//        print("爱心按钮相对于tableview的位置是：\(btnPos)")
-        let indexPath = tableView.indexPathForRow(at: btnPos)!      //根据相对tableView 的位置，找到 indexpath
-//        print("爱心按钮所在的indexpath为：\(indexPath)")
-    }
+//    @IBAction func favBtnTap(_ sender: UIButton) {
+//        let btnPos = sender.convert(CGPoint.zero, to: self.tableView)  //将sender相对自己的位置（0，0）转换成相对于 tableView 的位置
+////        print("爱心按钮相对于tableview的位置是：\(btnPos)")
+//        let indexPath = tableView.indexPathForRow(at: btnPos)!      //根据相对tableView 的位置，找到 indexpath
+////        print("爱心按钮所在的indexpath为：\(indexPath)")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,8 +109,8 @@ class WeaponsTableViewController: UITableViewController {
         let id = String(describing: CardCell.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! CardCell
         let weapon = weapons[indexPath.row]
-        cell.typeLabel.text = weapon.type
-        cell.weaponLabel.text = weapon.name
+        cell.typeLabel.text = weapon.time       // 时间
+        cell.weaponLabel.text = weapon.text      // 描述
         cell.backImageView.image = UIImage(named: weapon.image)
         
         return cell

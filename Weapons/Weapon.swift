@@ -7,8 +7,7 @@
 //
 
 struct Weapon {
-    var name = ""
-    var type = ""
+    var time = ""
     var image = ""
     
     //整体介绍

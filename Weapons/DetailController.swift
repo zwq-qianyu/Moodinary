@@ -51,17 +51,8 @@ class DetailController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            cell.keyLabel.text = "Name"
-            cell.valueLabel.text = weapon.name
-        case 1:
-            cell.keyLabel.text = "Type"
-            cell.valueLabel.text = weapon.type
-        case 2:
-            cell.keyLabel.text = "Bullet"
-            cell.valueLabel.text = weapon.bullet.description      //利用description能很方便地将浮点数或整数转化为字符串
-        case 3:
-            cell.keyLabel.text = "Muzzle Veolcity"
-            cell.valueLabel.text = weapon.mv.description
+            cell.keyLabel.text = "Time"
+            cell.valueLabel.text = weapon.time
         default:
             cell.keyLabel.isHidden = true
             cell.valueLabel.text = weapon.text
